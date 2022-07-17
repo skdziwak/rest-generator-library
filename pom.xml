@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>net.skdziwak</groupId>
-    <artifactId>retgen</artifactId>
+    <artifactId>restgen</artifactId>
     <version>0.0.1</version>
     <name>RestGeneratorLibrary</name>
     <description>RestGeneratorLibrary</description>
@@ -60,4 +60,11 @@
             <version>1.15.0</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub skdziwak Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/skdziwak/rest-generator-library</url>
+        </repository>
+    </distributionManagement>
 </project>

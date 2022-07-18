@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -36,5 +37,9 @@ public interface SearchRestfulService<ENTITY extends IEntity<ID>, ID, DTO> exten
 
     default Page<DTO> search(DefaultSearchSpecificationDTO specification) {
         return search(new DefaultSearchSpecification<>(specification, configuration()));
+    }
+
+    default Map<String, Object> searchContentSchema() {
+        return configuration().schemaGenerator().generateMap(searchDtoClass());
     }
 }

@@ -55,6 +55,13 @@ public class ${className} {
     }
     </#if>
 
+    <#if endpoints.put == true && endpointsSchema == true>
+    @GetMapping(path = "/SearchContentSchema")
+    public ResponseEntity<Map<String, Object>> searchContent${entityName}Schema() {
+        return ResponseEntity.ok(service.searchContentSchema());
+    }
+    </#if>
+
     <#if endpoints.patch == true>
     @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<${dto.view}> patch${entityName}(@PathVariable ${idClass} id, @RequestBody ${dto.patch} dto) {

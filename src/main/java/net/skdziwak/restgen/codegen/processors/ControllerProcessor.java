@@ -6,6 +6,7 @@ import net.skdziwak.restgen.codegen.generators.ControllerGenerator;
 import net.skdziwak.restgen.core.AbstractRestfulService;
 import net.skdziwak.restgen.core.extensions.*;
 import net.skdziwak.restgen.core.search.DefaultSearchSpecification;
+import net.skdziwak.restgen.core.search.DefaultSearchSpecificationDTO;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -88,7 +89,7 @@ public class ControllerProcessor extends AbstractProcessor {
         controllerSpecification.setClassName(controllerName);
         controllerSpecification.setEndpoints(endpoints);
         controllerSpecification.setDto(dtoSchema);
-        controllerSpecification.setSearchSpecificationClass(DefaultSearchSpecification.class.getName());
+        controllerSpecification.setSearchSpecificationClass(DefaultSearchSpecificationDTO.class.getName());
         controllerSpecification.setEntityName(entityName);
         controllerSpecification.setServiceClass(serviceQualifiedName);
         controllerSpecification.setIdClass(idName);

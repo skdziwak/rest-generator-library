@@ -71,7 +71,7 @@ public class ControllerProcessor extends AbstractProcessor {
                 dtoSchema.setView(((DeclaredType) typeArguments.get(2)).asElement().toString());
                 dtoSchema.setPatch(((DeclaredType) typeArguments.get(3)).asElement().toString());
             } else if (annotation.get() && className.equals(GetRestfulService.class.getName())) {
-                endpoints.setPut(true);
+                endpoints.setGet(true);
                 dtoSchema.setGet(((DeclaredType) typeArguments.get(2)).asElement().toString());
             } else if (annotation.search() && className.equals(SearchRestfulService.class.getName())) {
                 endpoints.setSearch(true);
@@ -92,6 +92,7 @@ public class ControllerProcessor extends AbstractProcessor {
         controllerSpecification.setEntityName(entityName);
         controllerSpecification.setServiceClass(serviceQualifiedName);
         controllerSpecification.setIdClass(idName);
+        controllerSpecification.setEndpointsSchema(annotation.jsonSchema());
 
         try (PrintWriter printWriter = new PrintWriter(processingEnv.getFiler().createSourceFile(packageName + "." + controllerName).openOutputStream())) {
             printWriter.print(ControllerGenerator.generateController(controllerSpecification));

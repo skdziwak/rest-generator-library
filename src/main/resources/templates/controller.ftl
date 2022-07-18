@@ -76,7 +76,7 @@ public class ${className} {
     }
     </#if>
 
-    <#if endpoints.get == true>
+    <#if endpoints.delete == true>
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> delete${entityName}(@PathVariable ${idClass} id) {
         service.delete(id);

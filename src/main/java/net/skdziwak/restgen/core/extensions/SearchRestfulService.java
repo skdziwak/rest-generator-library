@@ -23,9 +23,7 @@ public interface SearchRestfulService<ENTITY extends IEntity<ID>, ID, DTO> exten
         return dtoClass;
     }
 
-    default DTO mapSearch(ENTITY entity) {
-        return mapEntityToDTO(entity, searchDtoClass());
-    }
+    DTO mapSearch(ENTITY entity);
     default Page<DTO> search(SearchSpecification<ENTITY> specification) {
         Pageable pageable = specification.getPageable();
         Page<ENTITY> page = getRepository().findAll(specification, pageable);

@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Map;
 import java.util.Objects;
 
-public interface PatchRestfulService<ENTITY extends IEntity<ID>, ID, VIEW_DTO, PATCH_DTO> extends ViewRestfulService<ENTITY, ID, VIEW_DTO>, NotNullDtoMapping<PATCH_DTO> {
+public interface PatchRestfulService<ENTITY extends IEntity<ID>, ID, VIEW_DTO, PATCH_DTO> extends ViewRestfulService<ENTITY, ID, VIEW_DTO> {
     @Transactional
     default VIEW_DTO patch(ID id, PATCH_DTO dto) {
         ENTITY entity = getOne(id);
@@ -27,9 +27,7 @@ public interface PatchRestfulService<ENTITY extends IEntity<ID>, ID, VIEW_DTO, P
 
     }
 
-    default void mapPatch(PATCH_DTO dto, ENTITY entity) {
-        mapDtoToEntityWithoutNulls(dto, entity);
-    }
+    void mapPatch(PATCH_DTO dto, ENTITY entity);
 
     default void afterPatch(PATCH_DTO dto, ENTITY entity) {
 

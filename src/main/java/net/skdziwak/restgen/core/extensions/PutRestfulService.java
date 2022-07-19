@@ -27,9 +27,7 @@ public interface PutRestfulService<ENTITY extends IEntity<ID>, ID, VIEW_DTO, PUT
 
     }
 
-    default void mapPut(PUT_DTO dto, ENTITY entity) {
-        mapDtoToEntity(dto, entity);
-    }
+    void mapPut(PUT_DTO dto, ENTITY entity);
 
     default void afterPut(PUT_DTO dto, ENTITY entity) {
 

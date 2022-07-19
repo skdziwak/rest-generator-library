@@ -13,7 +13,5 @@ public interface ViewRestfulService<ENTITY extends IEntity<ID>, ID, DTO> extends
         return dtoClass;
     }
 
-    default DTO mapView(ENTITY entity) {
-        return mapEntityToDTO(entity, viewDtoClass());
-    }
+    DTO mapView(ENTITY entity);
 }

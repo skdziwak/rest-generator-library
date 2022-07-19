@@ -16,7 +16,5 @@ public interface GetRestfulService<ENTITY extends IEntity<ID>, ID, DTO> extends 
         return mapGet(getOne(id));
     }
 
-    default DTO mapGet(ENTITY entity) {
-        return mapEntityToDTO(entity, getDtoClass());
-    }
+    DTO mapGet(ENTITY entity);
 }

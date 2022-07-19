@@ -10,7 +10,7 @@ import java.util.Objects;
 public interface PostRestfulService<ENTITY extends IEntity<ID>, ID, VIEW_DTO, CREATE_DTO> extends ViewRestfulService<ENTITY, ID, VIEW_DTO> {
     @Transactional
     default VIEW_DTO post(CREATE_DTO dto) {
-        ENTITY entity = mapDtoToEntity(dto);
+        ENTITY entity = mapPost(dto);
         beforePost(dto);
         getRepository().saveAndFlush(entity);
         afterPost(dto, entity);
@@ -31,7 +31,5 @@ public interface PostRestfulService<ENTITY extends IEntity<ID>, ID, VIEW_DTO, CR
 
     }
 
-    default ENTITY mapPost(CREATE_DTO dto) {
-        return mapDtoToEntity(dto);
-    }
+    ENTITY mapPost(CREATE_DTO dto);
 }
